@@ -1,0 +1,61 @@
+$color:white;
+$bginput: grey;
+
+body{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    
+    #root{
+        width: 100%;
+        color: $color;
+    
+        .row{
+            height: 100vh;
+    
+            aside{
+                border-right: solid white;   
+            }
+
+            main{
+                h1{
+                    text-align: center;
+                }
+
+                .display{
+                    width: 80%;
+                    text-indent: 7em;
+                }
+                
+                .inputfield{
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+
+                    input{
+                        width: 80%;
+                        background-color: $bginput;
+                        color: $color;
+                    }
+
+                    textarea{
+                        width: 80%;
+                        height: 350px;
+                        margin-top: 1em;
+                        margin-bottom: 1em;
+                        background-color: $bginput;
+                        color: $color;
+                    }
+
+                    .buttonbox{
+                        width: 80%;
+                        button{
+                            float: right;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

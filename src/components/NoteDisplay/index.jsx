@@ -2,7 +2,6 @@ import React from 'react';
 import Showdown from 'showdown';
 
 const NoteDisplay = ({text}) => {
-	console.log("depuis NoteDisplay"+text)
 	const converter = new Showdown.Converter();
 	const content = converter.makeHtml(text);
 

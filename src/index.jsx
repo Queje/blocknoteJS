@@ -4,33 +4,46 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss'
 import MarkdownInput from './components/MarkdownInput';
 import NoteDisplay from './components/NoteDisplay';
+import SideBar from './components/SideBar';
 
 const App = () => {
-	const [titleCopy, setTitleCopy] = React.useState('');
-	const [textCopy, setTextCopy] = React.useState('');
+	const [title, setTitle] = React.useState('');
+	const [text, setText] = React.useState('');
+	const [savedTitle, setSavedTitle] = React.useState('')
 
-	const getTitleCopy= async(input)=>{
-		setTitleCopy(input);
+	const getTitle= async(input)=>{
+		setTitle(input);
 	}
 
-	const getTextCopy= async(input)=>{
-		setTextCopy(input);
+	const getText= async(input)=>{
+		setText(input);
 	}
-	
-	console.log("c'est la copie dans APP du titre:"+titleCopy);
-	console.log("c'est la copie dans APP du texte:"+textCopy);
-		
+
+	const handleSave = () => {
+		const note = JSON.stringify({title: title, text: text});	
+		const parsednote = JSON.parse(note);
+		const parsedList = [];
+		parsedList.push(parsednote);
+		setSavedTitle(parsednote.title);
+		console.log(note);
+		console.log(parsednote);
+		console.log(parsedList);
+	};
+
   return(
-		<main>
-			<h1>Mon Bloc-Note</h1>
-			<div className="display">
-				<h2>{titleCopy}</h2>
-				<NoteDisplay text={textCopy}/>
-			</div>
-			<div className="inputfield">
-				<MarkdownInput title={getTitleCopy} text={getTextCopy}/>
-			</div>
-		</main>
+		<div className="row">
+			<SideBar savedTitle={savedTitle}/>
+			<main className="col-10 p-0 bg-dark">
+				<h1>Mon Bloc-Note</h1>
+				<div className="display">
+					<h2>{title}</h2>
+					<NoteDisplay text={text}/>
+				</div>
+				<div className="inputfield">
+					<MarkdownInput title={getTitle} text={getText} handleSave={handleSave}/>
+				</div>
+			</main>
+		</div>
 	);
 }
 
