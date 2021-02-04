@@ -9,30 +9,32 @@ import SideBar from './components/SideBar';
 const App = () => {
 	const [title, setTitle] = React.useState('');
 	const [text, setText] = React.useState('');
-	const [savedTitle, setSavedTitle] = React.useState('')
+	const [savedNote, setSavedNote] = React.useState('')
 
 	const getTitle= async(input)=>{
 		setTitle(input);
 	}
-
+	
 	const getText= async(input)=>{
 		setText(input);
 	}
+	
+	const loadData=() => {
+		const loaded = JSON.parse(localStorage.getItem('bloc'));
+		return loaded ? loaded : [{title: "no notes", text: "no notes"}];
+	};
 
 	const handleSave = () => {
-		const note = JSON.stringify({title: title, text: text});	
-		const parsednote = JSON.parse(note);
-		const parsedList = [];
-		parsedList.push(parsednote);
-		setSavedTitle(parsednote.title);
-		console.log(note);
-		console.log(parsednote);
-		console.log(parsedList);
+		const tempload = loadData();
+		const note = JSON.stringify([{title: title, text: text},...tempload]);
+		localStorage.setItem('bloc', note);	
+		const parsednote = loadData();
+		setSavedNote(parsednote);
 	};
 
   return(
 		<div className="row">
-			<SideBar savedTitle={savedTitle}/>
+			<SideBar savedNote={savedNote} newTitle={getTitle} newText={getText}/>
 			<main className="col-10 p-0 bg-dark">
 				<h1>Mon Bloc-Note</h1>
 				<div className="display">

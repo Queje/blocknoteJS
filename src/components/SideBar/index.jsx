@@ -1,6 +1,11 @@
 import React from 'react';
 
-const SideBar = ({savedTitle}) => {
+const SideBar = ({savedNote, newTitle, newText}) => {
+
+	const handleNewNote = () => {
+		newTitle("nouvelle note");
+		newText("nouvelle note");
+	}
 
 	return (
 		<aside className="col-2 p-0 bg-dark">
@@ -8,11 +13,17 @@ const SideBar = ({savedTitle}) => {
 				<div className="collapse navbar-collapse">
 					<ul className="flex-md-column flex-row navbar-nav w-100 justify-content-center">
 						<li className="nav-item">
-								<button className="btn btn-danger">ajouter une note</button>
+								<button className="btn btn-danger" onClick={handleNewNote}>ajouter une note</button>
 						</li>
-						<li>
-						{savedTitle}	
-	          </li>
+						{(savedNote) &&
+							<section> 
+								{
+									savedNote.map((note, index) => (
+										<li key={index}>{note.title}</li>
+									))
+								}
+							</section>
+						}
 					</ul>
 				</div>
 			</nav>
