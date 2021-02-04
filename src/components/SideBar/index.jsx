@@ -15,6 +15,7 @@ const SideBar = ({savedNote, newTitle, newText}) => {
 						<li className="nav-item">
 								<button className="btn btn-danger" onClick={handleNewNote}>ajouter une note</button>
 						</li>
+						<div className="list">
 						{(savedNote) &&
 							<section> 
 								{
@@ -24,6 +25,7 @@ const SideBar = ({savedNote, newTitle, newText}) => {
 								}
 							</section>
 						}
+						</div>
 					</ul>
 				</div>
 			</nav>

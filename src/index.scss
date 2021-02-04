@@ -1,10 +1,12 @@
 $color:white;
 $bginput: grey;
+$customfont: Verdana, Geneva, Tahoma, sans-serif;
 
 body{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    font-family: $customfont;
     
     #root{
         width: 100%;
@@ -14,7 +16,12 @@ body{
             height: 100vh;
     
             aside{
-                border-right: solid white;   
+                border-right: solid white;  
+                font-family: $customfont;
+
+                .list{
+                    margin-top: 2em;
+                }
             }
 
             main{
@@ -24,7 +31,7 @@ body{
 
                 .display{
                     width: 80%;
-                    text-indent: 7em;
+                    text-indent: 8.5em;
                 }
                 
                 .inputfield{
@@ -34,12 +41,14 @@ body{
                     justify-content: center;
 
                     input{
+                        font-family: $customfont;
                         width: 80%;
                         background-color: $bginput;
                         color: $color;
                     }
 
                     textarea{
+                        font-family: $customfont;
                         width: 80%;
                         height: 350px;
                         margin-top: 1em;
@@ -49,6 +58,7 @@ body{
                     }
 
                     .buttonbox{
+                        font-family: $customfont;
                         width: 80%;
                         button{
                             float: right;
