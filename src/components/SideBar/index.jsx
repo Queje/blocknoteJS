@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SideBar = ({savedNote, newTitle, newText}) => {
+const SideBar = ({savedNote, newTitle, newText, handleClick}) => {
 
 	const handleNewNote = () => {
 		newTitle("nouvelle note");
@@ -20,7 +20,7 @@ const SideBar = ({savedNote, newTitle, newText}) => {
 							<section> 
 								{
 									savedNote.map((note, index) => (
-										<li key={index}>{note.title}</li>
+										<li key={index} onClick={() => handleClick(index)}>{note.title}, {note.text}</li>
 									))
 								}
 							</section>
